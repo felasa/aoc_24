@@ -50,11 +50,53 @@
 
 (defn chk-all-draws [coll-of-draws] (every? true? (map draw-possible? coll-of-draws)))
 (defn game-status [row] {:Game (:Game row) :valid (chk-all-draws (:draws row))})
-
+;;PART 1 SOLUTION
 (def solution 
   (reduce
     + 
     (map :Game (filter #(:valid %) (map game-status data)))))
-(print solution)
-(comment 
-  (take 5 data))
+(doto solution print) ;; 2476
+;; -- END PART 1 --
+
+;for testing
+(def example-data (parse-input "example_2_2")) 
+(def test-case (:draws (first data)))
+;;awful hack to deal with nils
+(defn add-key-if-none 
+  [kv k]
+  (if (nil? (k kv))
+    (assoc kv k 0)
+    kv))
+
+;; out of steam, there has to be a more concise way, not that I like this hack
+(defn complete-draw
+  [draw]
+  (-> draw 
+      (add-key-if-none :green)
+      (add-key-if-none :blue)
+      (add-key-if-none :red)))
+  
+(defn min-cubes 
+  [draws]
+  (zipmap [:red :blue :green]
+          (map #(get (apply max-key % (map complete-draw draws)) %) 
+               [:red :blue :green])))
+
+(defn game-fewest-cubes 
+  [game]
+  {:Game (:Game game) :fewest (min-cubes (:draws game))})
+
+(defn get-power
+  [draw]
+  (reduce * (vals draw)))
+
+(def solution_2
+  (reduce
+    + 
+    (map get-power 
+         (map :fewest 
+              (map game-fewest-cubes 
+                   data)))))
+
+(doto solution_2 prn) ;; nil
+;; 54911
