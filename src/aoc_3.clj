@@ -97,14 +97,83 @@
               (recur row (inc column) (str digit current) result 
                      (check-neighbors [row column] digit data)))))))))
 
-(def result_0 (walk-data data))
-(def result (apply + (map #(Integer/parseInt %) result_0)))
-result
+(comment
+  (def result_0 (walk-data data))
+  (def result (apply + (map #(Integer/parseInt %) result_0)))
+  result)
 ;;; END SOLUTION PART 1
 
+;;; START PART 2
+;; imma try getting coords again but walking the data instead of getting clever with regex
 
+(defn get-positions
+  [data]
+  (loop [row 0 col 0
+         digit nil col-start nil
+         result []]
+    (if (>= row (count data))
+      result
+      (if (>= col (count (get data row)))
+        (recur (inc row) 0
+               nil nil ;not detecting edge digits on the right
+               (if (nil? digit)
+                 result
+                 (conj result 
+                       [digit [row col-start]
+                              [row (+ col-start (dec (count digit)))]])))
+        (let [current (data-point [row col] data)]
+          (if (= current \.)
+            (recur row (inc col)
+                   nil nil 
+                   (if (nil? digit) 
+                     result
+                     (conj result 
+                           [digit [row col-start] [row (+ col-start (dec (count digit)))]])))
+            (if (is-symbol? current)
+              (recur row (inc col) nil nil 
+                     (if (nil? digit)
+                       (conj result [current [row col]])
+                       (conj result 
+                             [digit [row col-start] [row (+ col-start (dec (count digit)))]]
+                             [current [row col]])))
+              (recur row (inc col) (str digit current)
+                     (if (nil? col-start)
+                       col
+                       col-start)
+                     result)))))))) 
+
+(defn between 
+  "Return true if lb <= x <= ub"
+  [x lb ub]
+  (and (<= lb x) (>= ub x)))
+
+(defn find-neighbor-digits
+  "Given a coordinate and a list of positions, return the digits
+  that are neighbors to that coord"
+  [coords positions]
+  (let [[i j] coords]
+    (->>
+      positions
+      (remove #(is-symbol? (get % 0)))
+      (filter #(between (get (get % 1) 0) (dec i) (inc i)))
+      (filter #(and (<= (get (get % 1) 1) (inc j)) (>= (get (get % 2) 1) (dec j)))))))
+      
+(defn get-result-2
+  [positions]
+  (->>
+    positions
+    (filter #(= \* (get % 0)))
+    (map #(find-neighbor-digits (get % 1) positions)) 
+    (filter #(= (count %) 2))
+    (map #(* (Long/parseLong (first (first %))) (Long/parseLong (first (second %)))))
+    (reduce + (long 0))))
+
+;;PART 2 RESULT
+(get-result-2 (get-positions data))
+;;END PART 2
 ;;; STUFF FOR FAILED SOLUTION TO PART 1 KEEPING IT HERE SOME MIGHT BE USEFUL
-
+;;; I should re-try using the approach for part 2 since it was the original idea for 
+;;  this to use the coordinates to find the nieghbors, and it's probably faster
 (defn all-index-of
   "like index-of but gives me all the idx for matches"
   [string substring]
