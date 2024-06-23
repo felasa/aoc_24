@@ -18,10 +18,11 @@
 
 (defn position-score 
   [hand]
-  (reduce + 
-          (map-indexed #(* (math/pow 13 (- 4 %1)) 
-                           (get card-ranks %2)) 
-                       hand)))
+  (reduce
+    + 
+    (map-indexed #(* (math/pow 13 (- 4 %1)) 
+                     (get card-ranks %2)) 
+                 hand)))
 
 (defn get-hand-type
   [hand]
@@ -53,6 +54,53 @@
                                 (map 
                                    #(conj % (hand-score (get % 0)))
                                    input)))))
-;RESLUT TO PART 1
+;RESULT TO PART 1
 (winnings (parse-input "input_7"))
+;; PART 2
+(defn apply-joker 
+  [m]
+  (if (= (get m \J) 5) 
+    m
+    (let [max-k (key (apply max-key val (dissoc m \J)))
+          j-count (get m \J)]
+      (if (nil? j-count)
+        m 
+        (update (dissoc m \J) max-k #(+ j-count %))))))
+      
+  
+(defn get-hand-type-w-joker
+  [hand]
+  (let [char-hand (seq hand)
+        grouped (group-by identity char-hand)]
+    (into [] 
+          (sort-by #(- (key %))
+                   (update-vals (group-by second (apply-joker (update-vals grouped count)))
+                                count)))))
+
+(def card-ranks-w-joker
+  (update (zipmap cards (range 13 0 -1)) \J (constantly 0)))
+
+(defn position-score-w-joker
+  [hand]
+  (reduce
+    + 
+    (map-indexed #(* (math/pow 14 (- 4 %1)) 
+                     (get card-ranks-w-joker %2)) 
+                 hand)))
+
+(defn hand-score-w-joker [hand]
+  (+ (get type-score (get-hand-type-w-joker hand))
+     (position-score-w-joker hand)))
+
+(defn winnings-w-joker 
+  [input]
+  (reduce + 
+          (map-indexed #(* (inc %1) (get %2 1)) 
+                       (sort-by #(nth % 2) 
+                                (map 
+                                   #(conj % (hand-score-w-joker (get % 0)))
+                                   input)))))
+;; RESULT TO PART 2.
+;; could be refactored to avoid rewriting the same functions
+(winnings-w-joker (parse-input "input_7"))
 
