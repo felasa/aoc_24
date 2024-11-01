@@ -1,4 +1,4 @@
-(ns aoc-3
+(ns day-03.solution
   (:require [clojure.string :as str]))
 
 (defn read-data
@@ -7,8 +7,8 @@
        slurp
        str/split-lines))
 
-(def data (read-data "input_3"))
-(def example-data (read-data "example_3_1"))
+(def data (read-data "resources/data/input_3"))
+(def example-data (read-data "resources/data/example_3_1"))
 
 (comment 
   (count data) ;; 140

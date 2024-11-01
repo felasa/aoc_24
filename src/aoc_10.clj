@@ -3,7 +3,7 @@
     [clojure.string :as str]))
 
 
-(def puzzle-input  (str/split-lines (slurp "input_10")))
+(def puzzle-input  (str/split-lines (slurp "resources/data/input_10")))
 (type puzzle-input)
 (get (puzzle-input 0) 0)
 (get "abc" 0)

@@ -1,4 +1,5 @@
-(ns aoc-2 (:require [clojure.string :as str]))
+(ns day-02.solution 
+  (:require [clojure.string :as string]))
 
 (def initial-conditions {:red 12
                          :green 13
@@ -6,6 +7,7 @@
 
 ; compara los valores de cada llave
 ;(def draw {:red 12 :green 1}) ;testcase
+;A draw is a color->number map
 (defn draw-possible?
   "checks if [draw] is possible given (global) initial-conditions"
   [draw]
@@ -31,22 +33,22 @@
   (let [game (first sq)
         draws (last sq)]
    (conj
-     (apply #(assoc {} (keyword %1) (Integer/parseInt %2)) (str/split game #" ")) 
-     (assoc {} :draws (map (fn [vctr] (reduce add-to-draw {} (map #(str/split % #" ") vctr)))
-                          (map #(str/split % #", ") ;list of vectors of color counts 
-                                (str/split draws #"; "))))))) ; vector of draws 
+     (apply #(assoc {} (keyword %1) (Integer/parseInt %2)) (string/split game #" ")) 
+     (assoc {} :draws (map (fn [vctr] (reduce add-to-draw {} (map #(string/split % #" ") vctr)))
+                          (map #(string/split % #", ") ;list of vectors of color counts 
+                                (string/split draws #"; "))))))) ; vector of draws 
   
 (defn parse-input
   "read and parse input. output in the form:
    ({game: k, :draws ({:color n_1,..} {:color n_2,..} ...)}...)"
   [file]
-  (map split-draws (map #(str/split % #": ")
+  (map split-draws (map #(string/split % #": ")
                          (-> file 
                           slurp 
-                          str/split-lines))))
+                          string/split-lines))))
 
 (def data 
-  (parse-input "input_2"))
+  (parse-input "resources/data/input_2"))
 
 (defn chk-all-draws [coll-of-draws] (every? true? (map draw-possible? coll-of-draws)))
 (defn game-status [row] {:Game (:Game row) :valid (chk-all-draws (:draws row))})
@@ -59,7 +61,7 @@
 ;; -- END PART 1 --
 
 ;for testing
-(def example-data (parse-input "example_2_2")) 
+(def example-data (parse-input "resources/data/example_2_2")) 
 (def test-case (:draws (first data)))
 ;;awful hack to deal with nils
 (defn add-key-if-none 

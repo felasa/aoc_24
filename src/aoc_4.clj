@@ -10,8 +10,8 @@
      slurp
      str/split-lines))
 
-(def example-input (read-data "example_4_1"))
-(def puzzle-input (read-data "input_4"))
+(def example-input (read-data "resources/data/example_4_1"))
+(def puzzle-input (read-data "resources/data/input_4"))
 
 (defn parse-card 
   [line]

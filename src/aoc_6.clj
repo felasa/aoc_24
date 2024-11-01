@@ -2,7 +2,7 @@
   (:require
     [clojure.string :as str]))
 
-(def file "input_6")
+(def file "resources/data/input_6")
 
 (defn parse-input 
   [file]
@@ -47,5 +47,5 @@
   [file]
   (apply n-ways (parse-input-2 file)))
  
-(solution-2 file)
+(comment (solution-2 file))
 

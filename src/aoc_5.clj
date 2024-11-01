@@ -2,7 +2,7 @@
   (:require
     [clojure.string :as str]))
 
-(def file "example_5_1")
+(def file "resources/data/example_5_1")
 
 (defn split-blanks 
   [lines]
@@ -155,8 +155,8 @@
 ;; SOLUTION TO PART 1. LESSON LEARNED: DONT GET TOO FANCY CREATING MAPS, JUST APPLY THE RULE
 ;; (Maybe if they were lazy?)
 
-(def example-data (parse-input2 "example_5_1"))
-(def puzzle-data (parse-input2 "input_5"))
+(def example-data (parse-input2 "resources/data/example_5_1"))
+(def puzzle-data (parse-input2 "resources/data/input_5"))
 (apply min (map (partial track-location2 puzzle-data)  (:seeds puzzle-data)))
 
 ;;; PART 2

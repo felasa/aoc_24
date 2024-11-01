@@ -38,8 +38,8 @@
     {:directions (transform-directions (first (get x 0)))
      :tree (make-tree (rest (get x 1)))}))
 
-(def puzzle-input (parse-input "input_8"))
-(def example-input (parse-input "example_8_1"))
+(def puzzle-input (parse-input "resources/data/input_8"))
+(def example-input (parse-input "resources/data/example_8_1"))
 ;; UNUSED, example of traversing the tree given directions
 (defn travel 
   [directions tree start]

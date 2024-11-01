@@ -23,7 +23,7 @@
     ;(vector (cons (- (second sq) (first sq)) (s-diff (rest sq))))
     nil))
 
-(def puzzle-input (parse-input "input_9"))
+(def puzzle-input (parse-input "resources/data/input_9"))
 
 (defn diff-till-0 
   [sq]
