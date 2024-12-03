@@ -1,4 +1,4 @@
-(ns aoc-4 
+(ns day-04.previous 
   (:require
     [clojure.string :as str]
     [clojure.math :as math]
@@ -15,11 +15,15 @@
 
 (defn parse-card 
   [line]
-  (let [[card winning own] (str/split line #": +| \| +")]
-    (->
-      (assoc {} :Card (Integer/parseInt (get (str/split card #" +") 1)))
-      (assoc :winning (str/split winning #" +"))
-      (assoc :own (str/split own #" +")))))
+  (let [[card winning own] (str/split line #": +| \| +")
+        Card (parse-long (get (str/split card #" +") 1))
+        winning (str/split winning #" +")
+        own (str/split own #" +")]
+    (hash-map :Card Card :winning winning :own own)))
+;    (-> {
+;              (assoc :Card (parse-long (get (str/split card #" +") 1)))
+;              (assoc :winning (str/split winning #" +"))
+;              (assoc :own (str/split own #" +")))))
 
 (comment
   (parse-card (first example-input)))
@@ -56,18 +60,18 @@
 
 (defn winnings 
   [input]
-  (->> 
-    input
-    (map #(assoc % :n-won (n-won %)))
-    (filter #(> (:n-won %) 0))
-    (map #(math/pow 2 (dec (:n-won %))))
-    (reduce +)))
+  (->> input
+       (map #(assoc % :n-won (n-won %)))
+       (filter #(> (:n-won %) 0))
+       (map #(math/pow 2 (dec (:n-won %))))
+       (reduce +)))
 
 (winnings example-data) ;; 13.0
 (def puzzle-data (parse-input puzzle-input))
 ;; result part 1
-(winnings puzzle-data)
-
+(defn solution-1 [] (winnings puzzle-data))
+(comment 
+  (solution-1)) ;; 19855.0
 ;; PART 2
 (defn add-winnings
   [input]
