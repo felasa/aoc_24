@@ -60,10 +60,10 @@ MXMXAXMASX")
 
 (comment
   (solution-1 example-data) ;; 18
-  (solution-1 (-> "resources/input/input_05" slurp vdata))) ;; 2633
+  (solution-1 (-> "resources/input/input_04" slurp vdata))) ;; 2633
 
 (defn s1 []
-  (solution-1 (-> "resources/input/input_05" slurp vdata)))
+  (solution-1 (-> "resources/input/input_04" slurp vdata)))
 
 ;PART 2
 ;; only go down-right to avoid duplicates, we'll check for reversed values, and
@@ -97,8 +97,8 @@ MXMXAXMASX")
 
 (comment 
   (solution-2 example-data) ;; 9
-  (solution-2 (-> "resources/input/input_05" slurp vdata))) ;; 1936
+  (solution-2 (-> "resources/input/input_04" slurp vdata))) ;; 1936
 
 (defn s2 []
-  (solution-2 (-> "resources/input/input_05" slurp vdata)))
+  (solution-2 (-> "resources/input/input_04" slurp vdata)))
 
