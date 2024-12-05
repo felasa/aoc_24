@@ -1,4 +1,4 @@
-(ns aoc-5 
+(ns day-05.previous 
   (:require
     [clojure.string :as str]))
 
