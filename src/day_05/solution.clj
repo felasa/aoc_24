@@ -104,9 +104,10 @@
   (prn "This will take a while")
   (apply min (pmap #(apply (partial min-for-interval data) %)
                   (get-interval-seeds data)))) 
-;; there's surely a more efficient and clevr solution. 
+;; there's surely a more efficient and clever solution. 
 ;; an idea would be to compose the intervals for a final map and just map
-;; the strating points or deduce the inverse image of the whole chain
+;; the starting points (its piece-wise monotonically increasing) or compute 
+;; the inverse image of the whole chain
 (defn s2 []
   (solution-2 puzzle-data))
 
