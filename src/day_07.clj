@@ -17,7 +17,6 @@
       s/split-lines
       (map #(s/split % #": +| +"))
       (map (partial map parse-long))))
-      ;(map (partial split-at 1))))
 
 (def example-data (parse-input example-iput))
 
@@ -29,10 +28,6 @@
          ret coll]
     (if (empty? to-do) ret
       (recur (rest to-do) (apply-op ret (first to-do))))))
-
-(comment) 
-;  (apply-ops [* + +] [1 2 3 -5]) ;; 0
-;  (apply-ops * [3 5]))
 
 (defn append
   [a0 b0]
