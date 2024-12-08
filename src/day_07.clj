@@ -77,6 +77,39 @@
 (comment 
   (solution-1 (parse-input example-iput)) ;; 3749
   (solution-1 (parse-input (slurp "resources/input/input_07")))) ;; 2654749936343
+
+(defn s1 []
+  (solution-1 (parse-input (slurp "resources/input/input_07"))))
+
 ;; PART 2
 
-;($3 ($2 ($1 0 1) 2) 3)
+(defn paste
+  [n1 n2]
+  (parse-long (str n1 n2)))
+
+(defn find-ops-pt2
+  [target seq]
+  (let [n-ops (dec (count seq))
+        op-list (apply cross (repeat n-ops [+ * paste]))]
+    (loop [to-do op-list]
+      (if (empty? to-do) nil
+        (let [applied (apply-ops seq (first to-do))]
+          ;(println applied)
+          (if (= target (first applied)) 
+              true
+              (recur (rest to-do)))))))) 
+
+;; slow but tolerable
+(defn solution-2 
+  [data]
+  (->> data
+       (filter (fn [l] (find-ops-pt2 (first l) (rest l))))
+       (map first)
+       (reduce +))) 
+      
+(comment
+  (solution-2 example-data) ;; 11387
+  (solution-2 (parse-input (slurp "resources/input/input_07")))) ;; 124060392153684
+
+(defn s2 []
+  (solution-2 (parse-input (slurp "resources/input/input_07"))))
