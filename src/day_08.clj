@@ -68,8 +68,8 @@
           (reduce into x)
           (map (fn [pair] (anti-nodes (pair 0) (pair 1))) x)
           (reduce concat x)
-          (distinct x)
           (filter (fn [v] (and (<= 0 (get v 0) (dec nrows)) (<= 0 (get v 1) (dec ncols)))) x)
+          (distinct x)
           (count x))))
           
 (comment 
@@ -79,4 +79,48 @@
 (defn s1 []
   (solution-1 (slurp "resources/input/input_08")))
 
+;; PART 2
+
+(defn in-bounds?
+  "check if coord is in bounds [n-rows n-cols]"
+  [bounds coord]
+  (and (<= 0 (coord 0) (dec (bounds 0)))
+       (<= 0 (coord 1) (dec (bounds 1)))))
+
+(defn anti-nodes2
+  "Gets the antinode position for a given pair"
+  [bounds coord1 coord2]
+  (let [r1 (coord1 0) c1 (coord1 1)
+        r2 (coord2 0) c2 (coord2 1)
+        d1_r (- r1 r2) d1_c (- c1 c2)
+        d2_r (- r2 r1) d2_c (- c2 c1)
+        c1 (take-while (partial in-bounds? bounds) 
+                       (map (fn[n] [(+ r1 (* n d1_r)) (+ c1 (* n d1_c))])
+                            (range)))
+        c2 (take-while (partial in-bounds? bounds) 
+                       (map (fn[n] [(+ r2 (* n d2_r)) (+ c2 (* n d2_c))])
+                            (range)))]
+    (concat c1 c2)))
+      
+(defn solution-2 [s] 
+  (let [data (shape-input s)
+        nrows (count data)
+        ncols (count (data 0))] 
+    (as-> s x
+          (antenna-positions x)
+          (group-by first x)
+          (update-vals x (fn [coll] (mapv second coll)))
+          (map (fn [kv] (all-pairs (val kv))) x)
+          (reduce into x)
+          (map (fn [pair] (anti-nodes2 [nrows ncols] (pair 0) (pair 1))) x)
+          (reduce concat x)
+          (distinct x)
+          (count x))))
+
+(comment 
+  (solution-2 example-input) ;; 34
+  (solution-2 (slurp "resources/input/input_08"))) ;; 1231
+
+(defn s2 []
+  (solution-2 (slurp "resources/input/input_08")))
 
