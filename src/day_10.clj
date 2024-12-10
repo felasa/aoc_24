@@ -52,6 +52,7 @@
 
 (defn solution-1 [input]
   (let [data (to-int-arr input)
+        ;Benchmark saw no improvement by doing this here or in the fun def...
         mem-positions (memoize (partial terminal-positions data))]
     (->> data
         starting-postitions
@@ -67,4 +68,36 @@
 
 (defn s1 []
   (solution-1 (slurp "resources/input/input_10")))
+
+;; PART 2
+
+;same function as before but returning 1 every time it reaches an end and adding up
+(defn position-rating 
+  [data position]
+  (if-let [digit (access-array data position)]
+     (cond 
+       (= digit 9) 1
+       :else (let [neighbors (filter #(= ((partial access-array data) %) (inc digit)) 
+                                     (map #(% position) [up right down left]))]
+               (reduce + (map #(position-rating data %) neighbors))))
+     0))
+
+(comment
+   (position-rating (to-int-arr example-input) [0 4]))
   
+(defn solution-2 [input]
+  (let [data (to-int-arr input)
+        ;; again, no apparent benefit for this at least on this case...
+        mem-rating (memoize (partial position-rating data))]
+    (->> data
+        starting-postitions
+        (map mem-rating) 
+        (reduce +))))
+
+(comment
+  (solution-2 example-input) ;; 81
+  (solution-2 (slurp "resources/input/input_10"))) ;; 1764
+
+(defn s2 []
+  (solution-2 (slurp "resources/input/input_10")))
+
