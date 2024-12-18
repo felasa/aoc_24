@@ -103,12 +103,7 @@ Program: 0,1,5,4,3,0")
 
 ;; PART 2
 
-;; (mod x 8) = 2 ==> 3|x = 010
-
-(comment 
-  (take 100 (map (fn [i] (:out (compute [i 0 0] [2 4 1 2 7 5 4 1 1 3 5 5 0 3 3 0])))
-                 (map #(+ 35184372088832 %) (range)))))
-
+;; couldve used bitshifts since its all powers of 2 
 (def pow 
   (memoize 
     (fn step [n power]
@@ -119,16 +114,11 @@ Program: 0,1,5,4,3,0")
 (comment 
   (take 16 (map (fn [i] (:out (compute [i 0 0] [2 4 1 2 7 5 4 1 1 3 5 5 0 3 3 0])))
                 (range (bit-shift-left  1 (* 3 15)) (bit-shift-left  1 (* 3 16)) 
-                       (pow 8 0))))
-  (->> 
-    (range (bit-shift-left  1 (* 3 15)) (bit-shift-left  1 (* 3 16)) (pow 8 10))
-    (map (fn [i] [i (:out (compute [i 0 0] [2 4 1 2 7 5 4 1 1 3 5 5 0 3 3 0]))]))
-    (filter (fn [[idx out]] (and (= (out 15) 0) (= (out 14) 3) (= (out 13) 3))))
-    (second)))
+                       (pow 8 0)))))
 
 ;; every 8^10 the 14th digit changes
 ;; in general every 8^k the k+4 digit changes
-;; so for int between (bit-shift-left  1 (* 3 15)) (bit-shift-left  1 (* 3 16))
+;; so for int between (bit-shift-left  1 (* 3 15)) (2^(3*15)) (bit-shift-left  1 (* 3 16))
 ;; increase in steps of 8^10 until a 3 is found in the 14th
 ;; then increase in steps of 8^9 until 0 is found in the 13th
 ;; if none, return iterating 8^10 from where we left off
@@ -136,70 +126,28 @@ Program: 0,1,5,4,3,0")
 ;; and so on
 ;; [0 8 16 32 ..]
 ;; [  8 10 16 ]
+;; this was figured out by visual inspection, was this (easily) deducible?
 
-(comment 
-  ; Not right but cant figure out why
-  (let [target-result [2 4 1 2 7 5 4 1 1 3 5 5 0 3 3 0]
-        MAX (bit-shift-left 1 (* 3 16))]
+(defn s2 []
+  (let [target-result [2 4 1 2 7 5 4 1 1 3 5 5 0 3 3 0]]
    (loop [a    (bit-shift-left 1 (* 3 15))
           idx-check 13
           maxl (+ a (pow 8 (inc idx-check)))]
      (if (< idx-check 0) a
        (let [out (:out (compute (vector a 0 0) target-result))]
-         (if (= (get out idx-check) (get target-result idx-check))
-           (recur a 
-                  (dec idx-check)
-                  (+ a (pow 8 idx-check)))
-           (if (< a maxl)
-             (recur (+ a (pow 8 idx-check))
-                    idx-check
-                    maxl)
-             (do
-               (println idx-check a)
-               (recur maxl
-                      (inc idx-check)   
-                      (+ maxl (pow 8 (+ idx-check 2))))))))))))
+         (if (< a maxl)
+           (if (= (get out idx-check) (get target-result idx-check))
+             (recur a 
+                    (dec idx-check)
+                    (+ a (pow 8 idx-check)))
+             (if (< a maxl)
+               (recur (+ a (pow 8 idx-check))
+                      idx-check
+                      maxl)))
+           (recur maxl
+                  (inc idx-check)
+                  (+ maxl (+ (* 8 (pow 8 (inc idx-check)))))))))))) 
 
-;; Solved manually changing values :|
 (comment 
-  (let [target-result [2 4 1 2 7 5 4 1 1 3 5 5 0 3 3 0]
-        MAX (bit-shift-left 1 (* 3 16))
-        a   (+ (bit-shift-left 1 (* 3 15)) 
-               (* 3 (pow 8 13))
-               (* 5 (pow 8 12))
-               (* 5 (pow 8 11))
-               (* 1 (pow 8 10))
-               (* 0 (pow 8  9))
-               (* 0 (pow 8  8))
-               (* 0 (pow 8  7))
-               (* 5 (pow 8  6))
-               (* 1 (pow 8  5))
-               (* 3 (pow 8  4))
-               (* 6 (pow 8  3))
-               (* 7 (pow 8  2))
-               (* 6 (pow 8  1)))
-        idx-check 0
-        maxl (+ a (pow 8 (inc idx-check)))
-        a (+ a (* 4 (pow 8 idx-check)))
-        out (:out (compute (vector a 0 0) target-result))]
-    (println (< a maxl)) out))
-
-(+ (bit-shift-left 1 (* 3 15)) 
-   (* 3 (pow 8 13))
-   (* 5 (pow 8 12))
-   (* 5 (pow 8 11))
-   (* 1 (pow 8 10))
-   (* 0 (pow 8  9))
-   (* 0 (pow 8  8))
-   (* 0 (pow 8  7))
-   (* 5 (pow 8  6))
-   (* 1 (pow 8  5))
-   (* 3 (pow 8  4))
-   (* 6 (pow 8  3))
-   (* 7 (pow 8  2))
-   (* 6 (pow 8  1))
-   (* 4 (pow 8  0)))  ;; 37221261688308
-
-(:out (compute [37221261688308 0 0] [2 4 1 2 7 5 4 1 1 3 5 5 0 3 3 0]))
-(:out (compute [38878582193652 0 0] [2 4 1 2 7 5 4 1 1 3 5 5 0 3 3 0]))
+  (s2)) ;; 37221261688308
 
