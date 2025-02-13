@@ -117,20 +117,23 @@ bbrgwb")
   (solution-1 example-input) ;; 6
   (solution-1 (slurp "resources/input/input_19"))) ;; 317
 ;; PART 2
-; copiead solution
+; copied solution
 ; didn't think about memoization
 ; things i tried:
+; - remove redundant patterns and use only minimal ones. helped, but was still too slow.
 ; - assign multipliers to redundant patterns and use only those as base patterns
 ;   fails because a longer pattern can be broken down and form other valid patterns with 
 ;   adjacent characters
-; - try to work out a dynamic programming style solution (ala coinchange problem)
+; - try to work out a dynamic programming style solution (ala coinchange problem).
 ;   got stack overflows
 ; - try to work out a formula for the problem broken down in substrings
-;   may still be possible, couldnt figure it out
+;   may still be possible, couldnt figure it out.
 ; - The problem was identified correctly (too many patterns to try out) and a path to reduce
-;   complexity;  some patterns are redundant and possible to be made out of other, simpler ones. 
+;   complexity;  some patterns are redundant and possible to be constructed out of the other, simpler ones. 
 ;   But this realization didnt bring forth the idea that once a redundant pattern is evaluated (and memoized)
 ;   the combinations of subpatterns that add to the same will have already been computed
+; i.e. for patterns 'sbrgb' 's' 'brg' 'b' and design 'sbrgbxxxxxx' once one computes ways possible for 
+; 'xxxxx' removing 'sbrgb' from the start you've already compueted for the combination of 's' 'brg' 'b'
 
 
 ; This could also be used to solve part1 and is faster
@@ -155,16 +158,18 @@ bbrgwb")
         (map (partial ways-possible patterns))
         (reduce +))))
 
-(comment 
-  (let [s (slurp "resources/input/input_19")
+(defn solution-1b [s]
+  (let [
         data     (parse-input s)
         patterns (:patterns data)
         designs  (:designs data)]
     (count (remove zero? 
                   (map (partial ways-possible patterns)
-                       designs)))) ;; 317
+                       designs))))) 
+(comment 
   (solution-2 example-input) ;; 16
-  (solution-2 (slurp "resources/input/input_19"))) ;; 883443544805484
+  (solution-2 (slurp "resources/input/input_19")) ;; 883443544805484
+  (solution-1b (slurp "resources/input/input_19"))) ;; 317
 
 (defn s2 [] 
   (solution-2 (slurp "resources/input/input_19")))

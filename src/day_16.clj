@@ -257,26 +257,26 @@
         maze (:maze data)
         start (:start data)
         end (:end data)
-        graph (maze-graph maze neighbors-n-distance2)]
+        graph (maze-graph maze neighbors-n-distance)]
     (->> (trvrse graph [start "E"])
          (filter #(= (get (key %) 0) end))
          (map #(% 1))
          (reduce min))))
 
 (comment
-  (solution-1b example-input-2) ;; 1104
+  (solution-1b example-input-2) ;; 11048
   ;about 9seconds
   (time (solution-1b (slurp "resources/input/input_16")))) ;; 98416
 
 ;;; aight this is the strat:
-;; hack the graph so end coord without direction is a node (0 distance?)
+;; hack the graph so end coord without direction is a node (0 distance? nope. 
+;;   just replace
 ;; do shortest distances but add the predecessor
 ;, reverse graph, do shortest distances
 ;; find middle ground nodes
 ;; ???
 ;;profit
 
-; new neighbors fun that skips turns, hopefully speeds things up
 ; collapse end node into a single thing
 (defn no-turn-end 
   "Changes [end, dir] destination nodes in graph to just end"
