@@ -1,4 +1,4 @@
-(ns aoc-8 
+(ns y2023.aoc-8 
   (:require
     [clojure.string :as str]
     [criterium.core :as cr]))
@@ -38,8 +38,8 @@
     {:directions (transform-directions (first (get x 0)))
      :tree (make-tree (rest (get x 1)))}))
 
-(def puzzle-input (parse-input "resources/data/input_8"))
-(def example-input (parse-input "resources/data/example_8_1"))
+(def puzzle-input (parse-input "resources/input/2023/input_8"))
+(def example-input (parse-input "resources/input/2023/example_8_1"))
 ;; UNUSED, example of traversing the tree given directions
 (defn travel 
   [directions tree start]

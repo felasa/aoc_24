@@ -1,4 +1,4 @@
-(ns day-01.solution
+(ns y2023.day-01.solution
   (:require [clojure.string :as string]))
 
 (def s-digits ["one" "two" "three"
@@ -41,13 +41,16 @@
   [s]
   (str (first-digit-character s) (last-digit-character s)))
 
-(defn solution-1 [] ;; 54601
-  (->> "resources/data/input"
+(defn solution-1 []
+  (->> "resources/input/2023/input"
        slurp
        string/split-lines
        (map first-and-last-digit-character)
        (map parse-long)
        (reduce +))) 
+
+(comment 
+  (solution-1)) ;; 54601
 
 (defn partial-d-string 
   "Returns true if s is a substring from a starting position 
@@ -98,7 +101,7 @@
   (str (find-first-digit s) (find-last-digit s)))
  
 (defn solution-2 [] ;; 54078
-  (->> "resources/data/input"
+  (->> "resources/input/2023/input"
        slurp
        string/split-lines
        (map first-and-last-digit)
@@ -107,4 +110,4 @@
 
 (comment 
   (solution-1)
-  (solution-2))
+  (solution-2)) ;; 54078

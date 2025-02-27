@@ -1,4 +1,4 @@
-(ns day-01.discarded
+(ns y2023.day-01.discarded
   (:require [clojure.string :as string]))
 
 (defn is-number? 
@@ -79,9 +79,10 @@
 
 (def leido 
   (clojure.string/split-lines
-    (slurp "resources/data/input")))
+    (slurp "resources/input/2023/input")))
 ;; solucion
-(get-result leido) ;; 54078
+(comment
+  (get-result leido)) ;; 54078
 
 ;Another idea, still travels the whole string for the last digit. and it gets it wrong
 (def string->digit {"one"   1 

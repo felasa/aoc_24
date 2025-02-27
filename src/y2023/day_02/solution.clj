@@ -1,8 +1,8 @@
-(ns day-02.solution
+(ns y2023.day-02.solution
   (:require [clojure.string :as string])
   (:require [clojure.repl :as repl]))
 
-(def input-path "resources/data/input_2")
+(def input-path "resources/input/2023/input_2")
 
 (defn parse-draw
   "Turns a vector of separate cube counts in string form into a color->count map"

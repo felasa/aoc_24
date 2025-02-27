@@ -1,8 +1,8 @@
-(ns aoc-6 
+(ns y2023.aoc-6 
   (:require
     [clojure.string :as str]))
 
-(def file "resources/data/input_6")
+(def file "resources/input/2023/input_6")
 
 (defn parse-input 
   [file]

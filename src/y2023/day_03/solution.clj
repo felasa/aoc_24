@@ -1,8 +1,8 @@
-(ns day-03.solution
-  (:require [day-01.solution :refer [is-number?]]
+(ns y2023.day-03.solution
+  (:require [y2023.day-01.solution :refer [is-number?]]
             [clojure.string :as string]))
 
-(def input-path "resources/data/input_3")
+(def input-path "resources/input/2023/input_3")
 
 (defn read-data
   "Reads the puzzle input into an array of string"

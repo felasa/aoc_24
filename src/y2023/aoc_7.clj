@@ -1,4 +1,4 @@
-(ns aoc-7 
+(ns y2023.aoc-7 
   (:require
     [clojure.string :as str]
     [clojure.math :as math]))
@@ -55,7 +55,7 @@
                                    #(conj % (hand-score (get % 0)))
                                    input)))))
 ;RESULT TO PART 1
-(winnings (parse-input "resources/data/input_7"))
+(winnings (parse-input "resources/input/2023/input_7"))
 ;; PART 2
 (defn apply-joker 
   [m]
@@ -102,5 +102,5 @@
                                    input)))))
 ;; RESULT TO PART 2.
 ;; could be refactored to avoid rewriting the same functions
-(winnings-w-joker (parse-input "resources/data/input_7"))
+(winnings-w-joker (parse-input "resources/input/2023/input_7"))
 

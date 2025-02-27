@@ -1,4 +1,4 @@
-(ns day-02.previous 
+(ns y2023.day-02.previous 
   (:require [clojure.string :as string]))
 
 (def initial-conditions {:red 12
@@ -56,7 +56,7 @@
        (map split-draws))) 
 
 (def data 
-  (parse-input "resources/data/input_2"))
+  (parse-input "resources/input/2023/input_2"))
 
 (defn chk-all-draws [coll-of-draws] (every? true? (map draw-possible? coll-of-draws)))
 (defn game-status [row] {:Game (:Game row) :valid (chk-all-draws (:draws row))})
@@ -65,11 +65,12 @@
   (reduce
     + 
     (map :Game (filter #(:valid %) (map game-status data)))))
-(doto solution print) ;; 2476
+(comment
+  solution print) ;; 2476
 ;; -- END PART 1 --
 
 ;for testing
-(def example-data (parse-input "resources/data/example_2_2")) 
+(def example-data (parse-input "resources/input/2023/example_2_2")) 
 (def test-case (:draws (first data)))
 ;;awful hack to deal with nils
 (defn add-key-if-none 
@@ -109,5 +110,7 @@
               (map game-fewest-cubes 
                    data)))))
 
-(doto solution_2 prn) ;; nil
+(comment 
+  solution_2) 
+;; 54911
 ;; 54911

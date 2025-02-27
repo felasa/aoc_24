@@ -1,7 +1,7 @@
-(ns day-05.solution
+(ns y2023.day-05.solution
   (:require [clojure.string :as s]))
 
-(def example-input (slurp "resources/data/example_5_1"))
+(def example-input (slurp "resources/input/2023/example_5_1"))
 
 (defn split-blanks
   "splits input by blank lines to identify map sections"
@@ -60,12 +60,12 @@
   (let [data (-> s s/split-lines split-blanks parse-lines)] 
     (reduce min (map #(reduce apply-map % (vals (rest data))) (data :seeds)))))
 
-(solution-1 (slurp "resources/data/input_5")) ;; 457535844
+(solution-1 (slurp "resources/input/2023/input_5")) ;; 457535844
 
 ;; PART 2
 
 (def example-data (-> example-input s/split-lines split-blanks parse-lines))
-(def puzzle-data (-> "resources/data/input_5" slurp s/split-lines split-blanks parse-lines))
+(def puzzle-data (-> "resources/input/2023/input_5" slurp s/split-lines split-blanks parse-lines))
 
 
 (defn min-for-interval

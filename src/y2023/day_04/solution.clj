@@ -1,4 +1,4 @@
-(ns day-04.solution
+(ns y2023.day-04.solution
   (:require
     [clojure.string :as str]
     [clojure.math :as math]
@@ -51,7 +51,7 @@ Card 6: 31 18 13 56 72 | 74 77 10 23 35 67 36 11")
   (winnings (parse-input s)))
 
 (defn s1 []
-  (solution-1 (slurp "resources/data/input_4")))
+  (solution-1 (slurp "resources/input/2023/input_4")))
 
 (comment 
   (s1)) ;; 19855.0
@@ -85,7 +85,7 @@ Card 6: 31 18 13 56 72 | 74 77 10 23 35 67 36 11")
   (let [data (add-counts (parse-input s))]
     (reduce + (map #(get % :count 1) (vals data)))))
 
-(defn s2 [] (solution-2 (slurp "resources/data/input_4")))
+(defn s2 [] (solution-2 (slurp "resources/input/2023/input_4")))
         
 ;FINAL RESULT
 (comment 

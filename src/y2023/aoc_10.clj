@@ -1,9 +1,9 @@
-(ns aoc-10 
+(ns y2023.aoc-10 
   (:require
     [clojure.string :as str]))
 
 
-(def puzzle-input  (str/split-lines (slurp "resources/data/input_10")))
+(def puzzle-input  (str/split-lines (slurp "resources/input/2023/input_10")))
 (type puzzle-input)
 (get (puzzle-input 0) 0)
 (get "abc" 0)
@@ -94,5 +94,4 @@
 (travel-forward [38 56] right puzzle-input) ;; [38 55]
 (travel-forward [38 56] up puzzle-input) ;; [39 56]
 (first (disj (char-moves (get-char [38 56] puzzle-input)) right)) ;; \L
-          
-        
+
