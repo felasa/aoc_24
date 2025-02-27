@@ -88,7 +88,7 @@ bbrgwb")
 
 (comment 
   (let [;s example-input
-        s (slurp "resources/input/input_19")
+        s (slurp "resources/input/2024/input_19")
         data (parse-input s)
         patterns (:patterns data)]
     (time (println (remove-redundant-patterns patterns)))
@@ -115,7 +115,7 @@ bbrgwb")
 
 (comment 
   (solution-1 example-input) ;; 6
-  (solution-1 (slurp "resources/input/input_19"))) ;; 317
+  (solution-1 (slurp "resources/input/2024/input_19"))) ;; 317
 ;; PART 2
 ; copied solution
 ; didn't think about memoization
@@ -150,7 +150,7 @@ bbrgwb")
               +))))))
 
 (defn solution-2 [s] 
-  (let [s (slurp "resources/input/input_19")
+  (let [s (slurp "resources/input/2024/input_19")
         data     (parse-input s)
         patterns (:patterns data)
         designs  (:designs data)]
@@ -168,11 +168,11 @@ bbrgwb")
                        designs))))) 
 (comment 
   (solution-2 example-input) ;; 16
-  (solution-2 (slurp "resources/input/input_19")) ;; 883443544805484
-  (solution-1b (slurp "resources/input/input_19"))) ;; 317
+  (solution-2 (slurp "resources/input/2024/input_19")) ;; 883443544805484
+  (solution-1b (slurp "resources/input/2024/input_19"))) ;; 317
 
 (defn s2 [] 
-  (solution-2 (slurp "resources/input/input_19")))
+  (solution-2 (slurp "resources/input/2024/input_19")))
 
 ;; PREVIOUS (FAILED) ATTEMPTS FOR  PART 2
 ; can we make this function like dp? yes, see wdp
@@ -261,7 +261,7 @@ bbrgwb")
 ; not really getting close
 (defn solution-2fail 
  [s] 
- (let [;s (slurp "resources/input/input_19")
+ (let [;s (slurp "resources/input/2024/input_19")
        data (parse-input s)
        patterns (:patterns data)
        designs (:designs data)

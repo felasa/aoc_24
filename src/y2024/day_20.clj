@@ -96,5 +96,5 @@
     (count (cheats path 20 100))))
 
 (comment 
-  (solution-1 (slurp "resources/input/input_20")) ;; 1393
-  (solution-2 (slurp "resources/input/input_20"))) ;; 990096
+  (solution-1 (slurp "resources/input/2024/2024/input_20")) ;; 1393
+  (solution-2 (slurp "resources/input/2024/2024/input_20"))) ;; 990096

@@ -88,7 +88,7 @@
 
 
 (comment 
-  (solution-1 (slurp "resources/input/input_18"))) ;; 294
+  (solution-1 (slurp "resources/input/2024/input_18"))) ;; 294
 
 ;; PART 2
 
@@ -109,5 +109,5 @@
          (apply str))))
                      
 (comment 
-  (solution-2 (slurp "resources/input/input_18"))) ;; "31,22"
+  (solution-2 (slurp "resources/input/2024/input_18"))) ;; "31,22"
 

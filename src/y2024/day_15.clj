@@ -157,7 +157,7 @@ v^^>>><<^^<>>^v^<v^vv<>v^<<>^<^v^v><^<<<><<^<v><v<>vv>>v><v^<vv<>v^<<^")
 (comment 
   (solution-1 example-input) ;; 2028
   (solution-1 example-input-2) ;; 10092
-  (solution-1 (slurp "resources/input/input_15"))) ;; 1552879
+  (solution-1 (slurp "resources/input/2024/input_15"))) ;; 1552879
 
 ;; PART 2
 (defn double-char
@@ -273,7 +273,7 @@ v^^>>><<^^<>>^v^<v^vv<>v^<<>^<^v^v><^<<<><<^<v><v<>vv>>v><v^<vv<>v^<<^")
   
 (defn solution-2
   [s]
-  (let [;s (slurp "resources/input/input_15")
+  (let [;s (slurp "resources/input/2024/input_15")
         init (parse-input s)
         expanded (expand-map init)
         width (:width (:warehouse expanded))
@@ -288,8 +288,8 @@ v^^>>><<^^<>>^v^<v^vv<>v^<<>^<^v^v><^<<<><<^<v><v<>vv>>v><v^<vv<>v^<<^")
             
 (comment 
   (solution-2 example-input-2) ;; 9021
-  (solution-2 (slurp "resources/input/input_15"))) ;; 1561175
+  (solution-2 (slurp "resources/input/2024/input_15"))) ;; 1561175
 
 (defn s2 []
-  (solution-2 (slurp "resources/input/input_15")))
+  (solution-2 (slurp "resources/input/2024/input_15")))
 

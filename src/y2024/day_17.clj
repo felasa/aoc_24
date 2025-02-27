@@ -90,15 +90,15 @@ Program: 0,1,5,4,3,0")
   (compute [729 0 0] [0 1 5 4 3 0]) ;; {:A 0, :B 0, :C 0, :out [4 6 3 5 6 3 5 2 1 0]}
   (solution-1 exampe-input) ;; "4,6,3,5,6,3,5,2,1,0"
   (compute [27575648 0 0] [2 4 1 2 7 5 4 1 1 3 5 5 0 3 3 0]) ;; {:A 0, :B 1, :C 0, :out [5 4 3 6 3 0 4 1 1]}
-  (parse-input (slurp "resources/input/input_17"))
+  (parse-input (slurp "resources/input/2024/input_17"))
 ;; {:A 27575648,
 ;;  :B 0,
 ;;  :C 0,
 ;;  :instructions [2 4 1 2 7 5 4 1 1 3 5 5 0 3 3 0]}
-  (solution-1 (slurp "resources/input/input_17")))  ;; "1,7,2,1,4,1,5,4,0"
+  (solution-1 (slurp "resources/input/2024/input_17")))  ;; "1,7,2,1,4,1,5,4,0"
 
 (defn s1 []
-  (solution-1 (slurp "resources/input/input_17")))  ;; "1,7,2,1,4,1,5,4,0"
+  (solution-1 (slurp "resources/input/2024/input_17")))  ;; "1,7,2,1,4,1,5,4,0"
 
 
 ;; PART 2

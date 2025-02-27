@@ -12,10 +12,10 @@
             
 (comment 
   (solution-1 example-input) ;; 161
-  (solution-1 (slurp "resources/input/input_03"))) ;; 183669043
+  (solution-1 (slurp "resources/input/2024/input_03"))) ;; 183669043
 
 (defn s1 []
-  (println (solution-1 (slurp "resources/input/input_03"))))
+  (println (solution-1 (slurp "resources/input/2024/input_03"))))
 
 ;; PART 2
 (def example-input-2 
@@ -44,8 +44,8 @@
             (recur next ret false)))))))
                         
 (defn s2 []
-  (println (solution-2 (slurp "resources/input/input_03")))) 
+  (println (solution-2 (slurp "resources/input/2024/input_03")))) 
 
 (comment 
   (solution-2 example-input-2) ;; 48
-  (solution-2 (slurp "resources/input/input_03"))) ;; 59097164
+  (solution-2 (slurp "resources/input/2024/input_03"))) ;; 59097164

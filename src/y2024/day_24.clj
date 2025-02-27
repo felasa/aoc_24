@@ -67,7 +67,7 @@ tnw OR pbm -> gnj")
 
 (comment 
   (parse-input example-input)
-  (parse-input (slurp "resources/input/input_24"))
+  (parse-input (slurp "resources/input/2024/input_24"))
   ; thinking it would be better to do a whole pass at a time
   ; not-implemented tho
   (defn update-once 
@@ -105,10 +105,10 @@ tnw OR pbm -> gnj")
        
 (comment 
   (solution-1 example-input) ;; 2024
-  (solution-1 (slurp "resources/input/input_24"))) ;; 51657025112326
+  (solution-1 (slurp "resources/input/2024/input_24"))) ;; 51657025112326
 
 (defn s1 []
-  (solution-1 (slurp "resources/input/input_24")))
+  (solution-1 (slurp "resources/input/2024/input_24")))
 
 ;; PART 2
 ;; Part 2 was done by visually inspecting the circuit. I looked for other solutions 
@@ -154,7 +154,7 @@ tnw OR pbm -> gnj")
          (read-string))))
 
 (comment 
-  (apply-values (:topology (parse-input (slurp "resources/input/input_24")))
+  (apply-values (:topology (parse-input (slurp "resources/input/2024/input_24")))
                 1 1)) ;; 2
     
 (defn bits-wrong
@@ -176,7 +176,7 @@ tnw OR pbm -> gnj")
     (merge wx wy)))
   
 (comment 
-  (bits-wrong (:topology (parse-input (slurp "resources/input/input_24"))))) ;; {:x [5 9 15 30], :y [5 9 15 30]}
+  (bits-wrong (:topology (parse-input (slurp "resources/input/2024/input_24"))))) ;; {:x [5 9 15 30], :y [5 9 15 30]}
 
 ; This wasnt really needed but sheds light on wether it was the carry or 
 ; original position that was wrong
@@ -209,7 +209,7 @@ tnw OR pbm -> gnj")
 ;; and so on.
 
 ; var it for convenience
-(def topo (:topology (parse-input (slurp "resources/input/input_24"))))
+(def topo (:topology (parse-input (slurp "resources/input/2024/input_24"))))
 
 ;this is how two good positions look:
 (topo "z02") ;; [#function[clojure.core/bit-xor] "rtc" "fkn"]

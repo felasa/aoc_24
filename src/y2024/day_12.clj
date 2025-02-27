@@ -85,10 +85,10 @@ MMMISSJEEE")
 
 (comment 
   (solution-1 example-input) ;; 1930
-  (solution-1 (slurp "resources/input/input_12"))) ;; 1319878
+  (solution-1 (slurp "resources/input/2024/input_12"))) ;; 1319878
 
 (defn s1 []
-  (solution-1 (slurp "resources/input/input_12")))
+  (solution-1 (slurp "resources/input/2024/input_12")))
 
 ;; PART 2
 ;;  We count sides from the set of locations generated previously
@@ -152,8 +152,8 @@ MMMISSJEEE")
 
 (comment 
   (solution-2 example-input) ;; 1206
-  (solution-2 (slurp "resources/input/input_12"))) ;; 784982
+  (solution-2 (slurp "resources/input/2024/input_12"))) ;; 784982
 
 (defn s2 []
-  (solution-2 (slurp "resources/input/input_12")))
+  (solution-2 (slurp "resources/input/2024/input_12")))
 

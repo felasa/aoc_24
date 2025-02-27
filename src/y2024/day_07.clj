@@ -71,10 +71,10 @@
 
 (comment 
   (solution-1 (parse-input example-iput)) ;; 3749
-  (solution-1 (parse-input (slurp "resources/input/input_07")))) ;; 2654749936343
+  (solution-1 (parse-input (slurp "resources/input/2024/input_07")))) ;; 2654749936343
 
 (defn s1 []
-  (solution-1 (parse-input (slurp "resources/input/input_07"))))
+  (solution-1 (parse-input (slurp "resources/input/2024/input_07"))))
 
 ;; PART 2
 
@@ -104,7 +104,7 @@
       
 (comment
   (solution-2 example-data) ;; 11387
-  (solution-2 (parse-input (slurp "resources/input/input_07")))) ;; 124060392153684
+  (solution-2 (parse-input (slurp "resources/input/2024/input_07")))) ;; 124060392153684
 
 (defn s2 []
-  (solution-2 (parse-input (slurp "resources/input/input_07"))))
+  (solution-2 (parse-input (slurp "resources/input/2024/input_07"))))

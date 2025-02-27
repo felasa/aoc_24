@@ -32,10 +32,10 @@
 
 (comment
   (solution-1 example-input) ;; 2
-  (solution-1 (slurp "resources/input/input_02"))) ;; 534
+  (solution-1 (slurp "resources/input/2024/input_02"))) ;; 534
               
 (defn s1 [args]
-  (println (solution-1 (slurp "resources/input/input_02"))))
+  (println (solution-1 (slurp "resources/input/2024/input_02"))))
 
 ;; PART 2
 (defn damp-safe?
@@ -59,8 +59,8 @@
 
 (comment 
   (solution-2 example-input) ;; 4
-  (solution-2 (slurp "resources/input/input_02"))) ;; 577
+  (solution-2 (slurp "resources/input/2024/input_02"))) ;; 577
 
 (defn s2 [args]
-  (println (solution-2 (slurp "resources/input/input_02"))))
+  (println (solution-2 (slurp "resources/input/2024/input_02"))))
 

@@ -59,7 +59,7 @@ Prize: X=18641, Y=10279")
   
 (comment 
   (solution-1 example-input) ;; 480
-  (solution-1 (slurp "resources/input/input_13"))) ;; 37686
+  (solution-1 (slurp "resources/input/2024/input_13"))) ;; 37686
 
 ;; PART 2
 
@@ -84,7 +84,7 @@ Prize: X=18641, Y=10279")
 
 (comment 
   (solution-1b example-input)  ;; 480
-  (solution-1b (slurp "resources/input/input_13")))  ;; 37686
+  (solution-1b (slurp "resources/input/2024/input_13")))  ;; 37686
 
 (defn add-to-target
   [input]
@@ -101,8 +101,8 @@ Prize: X=18641, Y=10279")
 
 (comment 
   (solution-2 example-input) ;; 875318608908
-  (solution-2 (slurp "resources/input/input_13"))) ;; 77204516023437
+  (solution-2 (slurp "resources/input/2024/input_13"))) ;; 77204516023437
 
 (defn s2 []
-  (solution-2 (slurp "resources/input/input_13"))) 
+  (solution-2 (slurp "resources/input/2024/input_13"))) 
 

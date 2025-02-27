@@ -1,7 +1,5 @@
 (ns day-01
-  (:require [clojure.string :as s]
-            [clojure.set :as set]))
-
+  (:require [clojure.string :as s]))
 
 (def example-input 
     (-> 
@@ -10,7 +8,7 @@
       ((partial map parse-long))))
 
 (def puzzle-input
-  (-> "resources/input/input_01"
+  (-> "resources/input/2024/input_01"
       slurp
       (s/split #" +|\n")
       ((partial map parse-long))))

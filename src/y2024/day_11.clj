@@ -27,7 +27,7 @@
        
 (comment 
   (solution-1 example-input) ;; 55312
-  (solution-1 (s/replace (slurp "resources/input/input_11") "\n" ""))) ;; 183484
+  (solution-1 (s/replace (slurp "resources/input/2024/input_11") "\n" ""))) ;; 183484
 
 ;; PART 2
 ;; Memoization and recursion on the COUNTS not the value itsef
@@ -48,10 +48,10 @@
        (count-after-n-blinks 75)))
 
 (comment 
-  (solution-2 (s/replace (slurp "resources/input/input_11") "\n" "")) ;; 218817038947400
+  (solution-2 (s/replace (slurp "resources/input/2024/input_11") "\n" "")) ;; 218817038947400
   ;; better solution-1
   (count-after-n-blinks 25 [8069 87014 98 809367 525 0 9494914 5])) ;; 183484
 
 (defn s2 []
-  (solution-2 (s/replace (slurp "resources/input/input_11") "\n" "")))
+  (solution-2 (s/replace (slurp "resources/input/2024/input_11") "\n" "")))
 

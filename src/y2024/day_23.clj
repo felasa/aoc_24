@@ -77,10 +77,10 @@ td-yn")
 
 (comment 
   (solution-1 example-input) ;; 7
-  (solution-1 (slurp "resources/input/input_23"))) ;; 1064
+  (solution-1 (slurp "resources/input/2024/input_23"))) ;; 1064
     
 (defn s1 []
-  (solution-1 (slurp "resources/input/input_23")))
+  (solution-1 (slurp "resources/input/2024/input_23")))
   
 ;; PART 2
 
@@ -132,8 +132,8 @@ td-yn")
 
 (comment 
   (solution-2 example-input) ;; "co,de,ka,ta"
-  (solution-2 (slurp "resources/input/input_23"))) ;; "aq,cc,ea,gc,jo,od,pa,rg,rv,ub,ul,vr,yy"
+  (solution-2 (slurp "resources/input/2024/input_23"))) ;; "aq,cc,ea,gc,jo,od,pa,rg,rv,ub,ul,vr,yy"
 
 (defn s2 []
-  (solution-2 (slurp "resources/input/input_23")))
+  (solution-2 (slurp "resources/input/2024/input_23")))
 

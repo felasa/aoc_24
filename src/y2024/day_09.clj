@@ -70,7 +70,7 @@
 
 (comment 
   (solution-1 example-input) ;; 1928
-  (solution-1 (s/replace (slurp "resources/input/input_09") "\n" ""))) ;; 6471961544878
+  (solution-1 (s/replace (slurp "resources/input/2024/input_09") "\n" ""))) ;; 6471961544878
 
 (defn parse-input2 
   [s]
@@ -133,7 +133,7 @@
   ; much faster peek and pop helped; cound try first method but assoc-ing into the parsed input
 
 (defn s1 []
-  (solution-1a (drop-last (slurp "resources/input/input_09")))) ;; 6471961544878
+  (solution-1a (drop-last (slurp "resources/input/2024/input_09")))) ;; 6471961544878
 
 ;; PART 2
 
@@ -192,7 +192,7 @@
 
 (comment 
   (solution-2 example-input) ;; 2858
-  (solution-2 (s/replace (slurp "resources/input/input_09") "\n" "")))  ;; 6511178035564
+  (solution-2 (s/replace (slurp "resources/input/2024/input_09") "\n" "")))  ;; 6511178035564
  
 (defn s2 []
-  (solution-2 (s/replace (slurp "resources/input/input_09") "\n" "")))
+  (solution-2 (s/replace (slurp "resources/input/2024/input_09") "\n" "")))

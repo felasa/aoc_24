@@ -74,10 +74,10 @@
           
 (comment 
   (solution-1 example-input) ;; 14
-  (solution-1 (slurp "resources/input/input_08"))) ;; 364
+  (solution-1 (slurp "resources/input/2024/input_08"))) ;; 364
 
 (defn s1 []
-  (solution-1 (slurp "resources/input/input_08")))
+  (solution-1 (slurp "resources/input/2024/input_08")))
 
 ;; PART 2
 
@@ -119,8 +119,8 @@
 
 (comment 
   (solution-2 example-input) ;; 34
-  (solution-2 (slurp "resources/input/input_08"))) ;; 1231
+  (solution-2 (slurp "resources/input/2024/input_08"))) ;; 1231
 
 (defn s2 []
-  (solution-2 (slurp "resources/input/input_08")))
+  (solution-2 (slurp "resources/input/2024/input_08")))
 

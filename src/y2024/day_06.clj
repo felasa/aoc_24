@@ -75,10 +75,10 @@
          count)))        
 (comment 
   (solution-1 example-input) ;; 41
-  (solution-1 (slurp "resources/input/input_06"))) ;; 4696
+  (solution-1 (slurp "resources/input/2024/input_06"))) ;; 4696
 
 (defn s1 []
-  (solution-1 (slurp "resources/input/input_06")))
+  (solution-1 (slurp "resources/input/2024/input_06")))
 
 ;; BRUTE FORCE PART 2
 (defn loops? 
@@ -133,10 +133,10 @@
 
 (comment 
   (solution-2 example-input) ;; 6
-  (solution-2 (slurp "resources/input/input_06"))) ;; 1443
+  (solution-2 (slurp "resources/input/2024/input_06"))) ;; 1443
 
 (defn s2 []
-  (solution-2 (slurp "resources/input/input_06")))
+  (solution-2 (slurp "resources/input/2024/input_06")))
 
 ;; PART 2 idea
 ;; Can deduce from travel history??:
@@ -187,7 +187,7 @@
 
 (comment 
   (solution-1b example-input) ;; 41
-  (solution-1b (slurp "resources/input/input_06"))) ;; 4696
+  (solution-1b (slurp "resources/input/2024/input_06"))) ;; 4696
 
 (let [path (travel2 (parse-input example-input) [6 4] [-1 0])]
   (filter :corner? path))
@@ -245,7 +245,7 @@
        (map #(mapv + (:coord %) (:direction %)))))
 
 (comment 
-  (let [s (slurp "resources/input/input_06")
+  (let [s (slurp "resources/input/2024/input_06")
         data (parse-input s)
         start (find-start data) 
         path (travel2 data start [-1 0])]
@@ -271,5 +271,5 @@
   
 (comment 
   (solution-2 example-input)  ;; 6
-  (solution-2 (slurp "resources/input/input_06")));; 735 X doesnt account for deviations in between
+  (solution-2 (slurp "resources/input/2024/input_06")));; 735 X doesnt account for deviations in between
 ;; 340

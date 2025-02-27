@@ -70,7 +70,7 @@
     (get-in maze [1 13]))
   (parse-input example-input)
   (parse-input example-input-2)
-  (parse-input (slurp "resources/input/input_16")))
+  (parse-input (slurp "resources/input/2024/input_16")))
 
 (defn east [[row col]] [row (inc col)])
 (defn west [[row col]] [row (dec col)])
@@ -114,7 +114,7 @@
 
 (comment
   (let [data (parse-input example-input)
-        ;data (parse-input (slurp "resources/input/input_16"))
+        ;data (parse-input (slurp "resources/input/2024/input_16"))
         maze (:maze data)
         coord [9 1]
         dir "E"
@@ -149,7 +149,7 @@
 
 (comment
   (let [data (parse-input example-input)
-        ;data (parse-input (slurp "resources/input/input_16"))
+        ;data (parse-input (slurp "resources/input/2024/input_16"))
         maze (:maze data)]
     (simple-neighbors maze [13 1])))
     
@@ -173,7 +173,7 @@
         
 (comment
   (let [data (parse-input example-input)
-        ;data (parse-input (slurp "resources/input/input_16"))
+        ;data (parse-input (slurp "resources/input/2024/input_16"))
         maze (:maze data)
         start (:start data) end (:end data)]
     (paths-to-end maze start end)))
@@ -189,7 +189,7 @@
 (defn solution-1
   [s]
   (let [;s example-input
-        ;s (slurp "resources/input/input_16")
+        ;s (slurp "resources/input/2024/input_16")
         data (parse-input s)
         maze (:maze data)
         start (:start data)
@@ -203,7 +203,7 @@
   (solution-1 example-input) ;; 7036
   (solution-1 example-input-2) ;; 11048
   ;about 1.7minutes
-  (time (solution-1 (slurp "resources/input/input_16")))) ;; 98416
+  (time (solution-1 (slurp "resources/input/2024/input_16")))) ;; 98416
 
 ;; PART 2
 ; Mostly stolen from 
@@ -252,7 +252,7 @@
 (defn solution-1b
   [s]
   (let [;s example-input
-        ;s (slurp "resources/input/input_16")
+        ;s (slurp "resources/input/2024/input_16")
         data (parse-input s)
         maze (:maze data)
         start (:start data)
@@ -266,7 +266,7 @@
 (comment
   (solution-1b example-input-2) ;; 11048
   ;about 9seconds
-  (time (solution-1b (slurp "resources/input/input_16")))) ;; 98416
+  (time (solution-1b (slurp "resources/input/2024/input_16")))) ;; 98416
 
 ;;; aight this is the strat:
 ;; hack the graph so end coord without direction is a node (0 distance? nope. 
@@ -352,7 +352,7 @@
 (comment
   (solution-2 example-input) ;; 45
   (solution-2 example-input-2) ;; 64
-  (solution-2 (slurp "resources/input/input_16"))) ;; 471
+  (solution-2 (slurp "resources/input/2024/input_16"))) ;; 471
 
 ;; some things i tried that didn't pan out but maybe because faulty implementation
 ;; further along the line

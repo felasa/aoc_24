@@ -172,7 +172,7 @@
   (->> ["029A" "980A" "179A" "456A" "379A"]
        (map complexity)  ;; ([68 29] [60 980] [68 179] [64 456] [64 379])
        (reduce +))
-  (->> "resources/input/input_21" slurp
+  (->> "resources/input/2024/input_21" slurp
        s/split-lines
        (map complexity)
        (reduce +)))      ;; 184716
@@ -182,7 +182,7 @@
   (->> s s/split-lines (map complexity) (reduce +)))
 
 (comment 
-  (solution-1a (slurp "resources/input/input_21"))) ;; 184716
+  (solution-1a (slurp "resources/input/2024/input_21"))) ;; 184716
 ;; A variation is to make maps with the finalized best directions between any two
 ;; buttons
 (defn make-path-map
@@ -241,7 +241,7 @@
     (* len npart)))
 
 (comment
-  (->> "resources/input/input_21" slurp
+  (->> "resources/input/2024/input_21" slurp
        s/split-lines
        (map complexity-lite)
        (reduce +))) ;; 184716
@@ -250,7 +250,7 @@
   (->> s s/split-lines (map complexity-lite) (reduce +)))
 
 (comment
-  (solution-1b (slurp "resources/input/input_21"))) ;; 184716
+  (solution-1b (slurp "resources/input/2024/input_21"))) ;; 184716
   
 ;; PART 2
 ;; Part 2 was based on other solutinons i looked up. mainly
@@ -282,7 +282,7 @@
  (->> ["029A" "980A" "179A" "456A" "379A"]
       (map (partial solve 3))) ;; (68 60 68 64 64)
 ;; ([68 29] [60 980] [68 179] [64 456] [64 379])
- (->> "resources/input/input_21"
+ (->> "resources/input/2024/input_21"
       slurp (s/split-lines)
       (map (fn [s] (* (parse-long (re-find #"\d+" s))
                       (solve 26 s))))
@@ -297,7 +297,7 @@
        (reduce +)))
 
 (comment 
-  (solution-2 (slurp "resources/input/input_21"))) ;; 229403562787554
+  (solution-2 (slurp "resources/input/2024/input_21"))) ;; 229403562787554
 
 ;; part 1 can be done too with this
 (defn solution-1c
@@ -308,7 +308,7 @@
        (reduce +)))
 
 (comment 
-  (solution-1b (slurp "resources/input/input_21"))) ;; 184716
+  (solution-1b (slurp "resources/input/2024/input_21"))) ;; 184716
 
 ;; =====================================================================
 ;; Stuff to visually inspect what was going on when i was stuck in part 1.

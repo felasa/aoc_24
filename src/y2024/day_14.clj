@@ -58,15 +58,15 @@ p=9,5 v=-3,-3")
 
 (comment 
   (solution-1 11 7 example-input) ;; 12
-  (solution-1 101 103 (slurp "resources/input/input_14"))) ;; 208437768
+  (solution-1 101 103 (slurp "resources/input/2024/input_14"))) ;; 208437768
 
 (defn s2 []
-  (solution-1 101 103 (slurp "resources/input/input_14")))
+  (solution-1 101 103 (slurp "resources/input/2024/input_14")))
 
 ;;PART 2
 
 (defn positions-at [ticks] 
-  (let [input (slurp "resources/input/input_14")
+  (let [input (slurp "resources/input/2024/input_14")
         ncols 101 nrows 103]
     (as-> input x (read-input x)
          (map #((partial tick ncols nrows ticks) (:start-pos %) (:velocity %)) x)

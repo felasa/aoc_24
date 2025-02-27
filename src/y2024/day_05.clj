@@ -89,10 +89,10 @@
 (comment 
   (def example-data (parse-input example-input))
   (solution-1 example-input)   ;; 143
-  (solution-1 (slurp "resources/input/input_05"))) ;; 7024
+  (solution-1 (slurp "resources/input/2024/input_05"))) ;; 7024
 
 (defn s1 []
-  (solution-1 (slurp "resources/input/input_05"))) 
+  (solution-1 (slurp "resources/input/2024/input_05"))) 
 
 ;; PART 2
 
@@ -120,8 +120,8 @@
 
 (comment 
   (solution-2 example-input) ;; 123
-  (solution-2 (slurp "resources/input/input_05"))) ;; 4151
+  (solution-2 (slurp "resources/input/2024/input_05"))) ;; 4151
 
 (defn s2 []
-  (solution-2 (slurp "resources/input/input_05"))) ;; 4151
+  (solution-2 (slurp "resources/input/2024/input_05"))) ;; 4151
 

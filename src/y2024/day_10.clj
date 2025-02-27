@@ -64,10 +64,10 @@
   (to-int-arr example-input)
   (access-array (to-int-arr example-input) [7 7])
   (solution-1 example-input) ;; 36
-  (solution-1 (slurp "resources/input/input_10"))) ;; 760
+  (solution-1 (slurp "resources/input/2024/input_10"))) ;; 760
 
 (defn s1 []
-  (solution-1 (slurp "resources/input/input_10")))
+  (solution-1 (slurp "resources/input/2024/input_10")))
 
 ;; PART 2
 
@@ -96,8 +96,8 @@
 
 (comment
   (solution-2 example-input) ;; 81
-  (solution-2 (slurp "resources/input/input_10"))) ;; 1764
+  (solution-2 (slurp "resources/input/2024/input_10"))) ;; 1764
 
 (defn s2 []
-  (solution-2 (slurp "resources/input/input_10")))
+  (solution-2 (slurp "resources/input/2024/input_10")))
 

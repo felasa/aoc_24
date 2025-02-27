@@ -33,7 +33,7 @@
 
 (comment 
   (solution-1 example-input) ;; 37327623
-  (solution-1 (slurp "resources/input/input_22")))  ;; 18941802053
+  (solution-1 (slurp "resources/input/2024/input_22")))  ;; 18941802053
 
 ;; PART 2
 
@@ -74,5 +74,5 @@
 
 (comment 
   (solution-2 "1\n2\n3\n2024") ;; 23
-  (solution-2 (slurp "resources/input/input_22"))) ;; 2218
+  (solution-2 (slurp "resources/input/2024/input_22"))) ;; 2218
 
